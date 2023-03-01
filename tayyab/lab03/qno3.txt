@@ -1,0 +1,56 @@
+; Program Template           (Template.asm)
+
+; Program Description:
+; Author:
+; Creation Date:
+; Revisions: 
+; Date:              Modified by:
+include irvine32.inc
+.386
+.model flat,stdcall
+.stack 4096
+ExitProcess PROTO, dwExitCode:DWORD
+.data
+     lmsg BYTE "Enter Length of Rectangle ",0
+	 wmsg BYTE "Enter Width of Rectangle ",0
+	 result BYTE "The Perimeter of Rectangle= ",0
+	 leng Dword ?
+	 widt Dword ?
+	 peri Dword ?
+	 formula Dword 2
+; declare variables here
+.code
+main PROC
+	; write your code here
+	mov edx, offset lmsg
+	call writestring
+	call ReadDec
+
+	mov leng,eax
+
+	mov edx, offset wmsg
+	call writestring
+	call ReadDec
+
+	mov widt,eax
+
+	mov eax,leng
+	mov ebx,2
+	mul ebx
+	mov leng,eax
+
+	mov eax,widt
+	mov ebx,2
+	mul ebx
+
+	add eax,leng
+	mov peri,eax
+
+	mov edx, offset result
+	call writestring
+	call writeInt
+
+	INVOKE ExitProcess,0
+main ENDP
+; (insert additional procedures here)
+END main

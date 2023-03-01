@@ -1,0 +1,122 @@
+; Program Template           (Template.asm)
+
+; Program Description:
+; Author:
+; Creation Date:
+; Revisions: 
+; Date:              Modified by:
+include irvine32.inc
+.386
+.model flat,stdcall
+.stack 4096
+ExitProcess PROTO, dwExitCode:DWORD
+.data
+; declare variables here
+     msg byte "Enter Any Alphabet : ",0
+	 cmsg byte "Result : ",0
+	 emsg byte "Invalid Input",0
+.code
+main PROC
+	; write your code here
+	mov edx,offset msg
+	call writestring
+	call readchar
+	call writechar
+	call crlf
+
+	.if al=='0'
+	mov edx,offset cmsg
+	call writestring
+	call writechar
+
+	.elseif al=='1'
+	mov edx,offset cmsg
+	call writestring
+	call writechar
+
+	.elseif al=='2'
+	mov edx,offset cmsg
+	call writestring
+	call writechar
+
+	.elseif al =='3'
+	mov edx,offset cmsg
+	call writestring
+	call writechar
+
+	.elseif al =='4'
+	mov edx,offset cmsg
+	call writestring
+	call writechar
+
+	.elseif al =='5'
+	mov edx,offset cmsg
+	call writestring
+	call writechar
+
+	.elseif al=='6'
+	mov edx,offset cmsg
+	call writestring
+	call writechar
+
+	.elseif al =='7'
+	mov edx,offset cmsg
+	call writestring
+	call writechar
+
+	.elseif al =='8'
+	mov edx,offset cmsg
+	call writestring
+	call writechar
+
+	.elseif al=='9'
+	mov edx,offset cmsg
+	call writestring
+	call writechar
+
+	.elseif al=='a' || al=='A'
+	mov edx,offset cmsg
+	call writestring
+	mov eax,10
+	call writeint
+	
+	.elseif al =='b' || al=='B'
+	mov edx,offset cmsg
+	call writestring
+	mov eax,11
+	call writeint
+
+	.elseif al =='C' || al=='c'
+	mov edx,offset cmsg
+	call writestring
+	mov eax,12
+	call writeint
+
+	.elseif al =='D' || al=='d'
+	mov edx,offset cmsg
+	call writestring
+	mov eax,13
+	call writeint
+
+	.elseif al =='E' || al=='e'
+	mov edx,offset cmsg
+	call writestring
+	mov eax,14
+	call writeint
+
+	.elseif al =='F' || al=='f'
+	mov edx,offset cmsg
+	call writestring
+	mov eax,15
+	call writeint
+
+	.else
+	mov edx,offset emsg
+	call writestring
+
+	.endif
+
+	INVOKE ExitProcess,0
+main ENDP
+; (insert additional procedures here)
+END main

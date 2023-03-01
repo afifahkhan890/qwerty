@@ -1,0 +1,3 @@
+﻿  Assembling coal.asm...
+coal.asm(10): warning A4011: multiple .MODEL directives found : .MODEL ignored
+  tayyab.vcxproj -> C:\Users\Student\Desktop\tayyab\Debug\tayyab.exe

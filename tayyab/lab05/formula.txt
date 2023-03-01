@@ -1,0 +1,53 @@
+; Program Template           (Template.asm)
+
+; Program Description:
+; Author:
+; Creation Date:
+; Revisions: 
+; Date:              Modified by:
+include irvine32.inc
+.386
+.model flat,stdcall
+.stack 4096
+ExitProcess PROTO, dwExitCode:DWORD
+.data
+     xmsg BYTE "Enter value of val1 ",0
+	 ymsg BYTE "Enter value of val2 ",0
+	 result BYTE "Given Equation (val1+val2)/4*8 Sum = ",0
+	 Fno dword 4
+	 Sno dword 8
+	 val1 dword ?
+	 val2 dword ?
+; declare variables here
+.code
+main PROC
+	; write your code here
+	mov edx, offset xmsg
+	call WriteString
+	call ReadDec
+
+	mov val1,eax
+
+	mov edx, offset ymsg
+	call WriteString
+	call ReadDec
+
+	mov val2,eax
+
+	add eax,val1
+
+	mov ebx,eax
+
+	mov eax,fno
+	mul sno
+
+	div ebx
+
+	mov edx, offset result
+	call writestring
+	call writeDec
+
+	INVOKE ExitProcess,0
+main ENDP
+; (insert additional procedures here)
+END main

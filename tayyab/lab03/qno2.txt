@@ -1,0 +1,58 @@
+; Program Template           (Template.asm)
+
+; Program Description:
+; Author:
+; Creation Date:
+; Revisions: 
+; Date:              Modified by:
+include irvine32.inc
+.386
+.model flat,stdcall
+.stack 4096
+ExitProcess PROTO, dwExitCode:DWORD
+.data
+     Fno dword 0
+	 Sno dword 2
+	 Fmov dword ?
+	 Smov dword ?
+	 result dword ?
+	 msg BYTE " = ",0
+
+; declare variables here
+.code
+main PROC
+	; write your code here
+	mov eax,Fno
+	add eax,Sno
+
+	call WriteInt
+
+	add eax,Sno
+	
+	call WriteInt
+
+	mov Fmov,eax
+	mov eax,Sno
+	add eax,Fmov
+
+	call WriteInt
+
+	mov Smov,eax
+	mov eax,Sno
+	add eax,Smov
+
+	call WriteInt
+
+	add eax,Smov
+	add eax,Fmov
+	add eax,Sno
+
+	mov edx, offset msg
+	call writestring
+	call WriteInt
+
+
+	INVOKE ExitProcess,0
+main ENDP
+; (insert additional procedures here)
+END main

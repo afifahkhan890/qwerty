@@ -1,0 +1,42 @@
+; Program Template           (Template.asm)
+
+; Program Description:
+; Author:
+; Creation Date:
+; Revisions: 
+; Date:              Modified by:
+include irvine32.inc
+.386
+.model flat,stdcall
+.stack 4096
+ExitProcess PROTO, dwExitCode:DWORD
+.data
+; declare variables here
+     
+     myarray dword 30 dup(5 dup(0))
+	 lmsg byte "Length of Array : ",0
+	 smsg byte "Size of Array : ",0
+	 s dword ?
+	 l dword ?
+.code
+main PROC
+	; write your code here
+	mov eax,0
+	mov eax,sizeof myarray
+	mov s,eax
+	mov edx,offset lmsg
+	call writestring
+	call writedec
+	call crlf
+
+    mov eax,0
+	mov eax,lengthof myarray
+	mov l,eax
+	mov edx,offset smsg
+	call writestring
+	call writedec
+
+	INVOKE ExitProcess,0
+main ENDP
+; (insert additional procedures here)
+END main

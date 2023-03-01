@@ -1,0 +1,36 @@
+; Program Template           (Template.asm)
+
+; Program Description:
+; Author:
+; Creation Date:
+; Revisions: 
+; Date:              Modified by:
+include irvine32.inc
+.386
+.model flat,stdcall
+.stack 4096
+ExitProcess PROTO, dwExitCode:DWORD
+.data
+; declare variables here
+     msg byte "Enter Any Alphabet : ",0
+	 vmsg byte "Alphabet is Vowel",0
+	 cmsg byte "Alphabet is Consonant",0
+.code
+main PROC
+	; write your code here
+	mov edx,offset msg
+	call writestring
+	call readchar
+	call writechar
+	call crlf
+	.if eax=='A' || eax=='a' || eax=='e' || eax=='E' || eax=='I' || eax=='i' || eax=='o' || eax=='O' || eax=='U' || eax=='u' 
+	mov edx,offset vmsg
+	call writestring
+	.else 
+	mov edx,offset cmsg
+	call writestring
+	.endif
+	INVOKE ExitProcess,0
+main ENDP
+; (insert additional procedures here)
+END main

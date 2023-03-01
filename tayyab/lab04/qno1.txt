@@ -1,0 +1,46 @@
+; Program Template           (Template.asm)
+
+; Program Description:
+; Author:
+; Creation Date:
+; Revisions: 
+; Date:              Modified by:
+include irvine32.inc
+.386
+.model flat,stdcall
+.stack 4096
+ExitProcess PROTO, dwExitCode:DWORD
+.data
+; declare variables here
+     bvar byte 12
+	 wvar word 11
+	 dvar dword 10
+	 warray word 1,2,3
+	 qarray qword 8 dup(?)
+	 msg byte "HOMEWORK",0
+.code
+main PROC
+	; write your code here
+	mov eax,0
+
+	 mov al,bvar
+	 mov bx,wvar
+	 mov ecx,dvar
+
+	 mov esi,0
+	 mov ecx,5
+
+	 top:
+	 mov esi,offset warray
+	 mov ax,[esi]
+	 inc esi
+	 mov edx,offset msg
+	 call writestring
+	 call crlf
+	 loop top
+
+
+	INVOKE ExitProcess,0
+main ENDP
+; (insert additional procedures here)
+END main

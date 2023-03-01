@@ -1,0 +1,49 @@
+; Program Template           (Template.asm)
+
+; Program Description:
+; Author:
+; Creation Date:
+; Revisions: 
+; Date:              Modified by:
+include irvine32.inc
+.386
+.model flat,stdcall
+.stack 4096
+ExitProcess PROTO, dwExitCode:DWORD
+.data
+; declare variables here
+     
+    array1 dword 2,4,6,9,5
+	array2 dword 3,6,5,1,1
+	sumarray dword ?
+	msg1 byte "Array1 : 2 4 6 9 5",0
+	msg2 byte "Array2 : 3 6 5 1 1",0
+	summsg byte "Sum of Arrays : ",0
+.code
+main PROC
+	; write your code here
+	mov edx,offset msg1
+	call writestring
+	call crlf
+
+	mov edx,offset msg2
+	call writestring
+	call crlf
+	
+	mov edx,offset summsg
+	call writestring
+	call crlf
+	
+	mov esi,0
+	mov ecx,5
+	Array:
+	mov eax,array1[esi]
+	sub eax,array2[esi]
+	call writeint
+	add esi,4
+	loop array
+	
+	INVOKE ExitProcess,0
+main ENDP
+; (insert additional procedures here)
+END main

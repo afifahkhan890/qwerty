@@ -1,0 +1,104 @@
+; Program Template           (Template.asm)
+
+; Program Description:
+; Author:
+; Creation Date:
+; Revisions: 
+; Date:              Modified by:
+include irvine32.inc
+.386
+.model flat,stdcall
+.stack 4096
+ExitProcess PROTO, dwExitCode:DWORD
+.data
+     Fno dword 1
+	 Sno dword 2
+	 Fmov dword ?
+	 Smov dword ?
+	 Tmov dword ?
+	 Forthmov dword ?
+	 Fivthmov dword ?
+	 Sixmov dword ?
+	 Sevenmov dword ?
+	 Eightmov dword ?
+	 result dword ?
+	 msg BYTE " = ",0
+
+; declare variables here
+.code
+main PROC
+	; write your code here
+	mov eax,Fno
+	call WriteInt
+
+	add eax,Sno
+
+	call WriteInt
+
+	mov Fmov,eax
+	add eax,Sno
+	
+	call WriteInt
+
+	mov Smov,eax
+	mov eax,Sno
+	add eax,Smov
+
+	call WriteInt
+
+	mov Tmov,eax
+	mov eax,Sno
+	add eax,Tmov
+
+	call WriteInt
+
+	mov Forthmov,eax
+	mov eax,Sno
+	add eax,Forthmov
+
+	call WriteInt
+
+	mov Fivthmov,eax
+	mov eax,Sno
+	add eax,Fivthmov
+
+	call WriteInt
+
+	mov sixmov,eax
+	mov eax,Sno
+	add eax,sixmov
+
+	call WriteInt
+
+	mov sevenmov,eax
+	mov eax,Sno
+	add eax,sevenmov
+
+	call WriteInt
+
+	mov Eightmov,eax
+	mov eax,Sno
+	add eax,Eightmov
+
+	call WriteInt
+
+	mov ebx,eax
+	add eax,eightmov
+	add eax,sevenmov
+	add eax,sixmov
+	add eax,fmov
+	add eax,fivthmov
+	add eax,forthmov
+	add eax,tmov
+	add eax,Smov
+	add eax,fno
+
+	mov edx, offset msg
+	call writestring
+	call WriteDec
+
+
+	INVOKE ExitProcess,0
+main ENDP
+; (insert additional procedures here)
+END main

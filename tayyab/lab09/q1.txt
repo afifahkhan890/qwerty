@@ -1,0 +1,70 @@
+; Program Template           (Template.asm)
+
+; Program Description:
+; Author:
+; Creation Date:
+; Revisions: 
+; Date:              Modified by:
+include irvine32.inc
+.386
+.model flat,stdcall
+.stack 4096
+ExitProcess PROTO, dwExitCode:DWORD
+.data
+; declare variables here
+     fmsg byte "Enter First Number : ",0
+	 smsg byte "Enter Second Number : ",0
+	 tmsg byte "Enter Third Number : ",0
+	 fm byte "Value of First Number : ",0
+	 sm byte "Value of Second Number : ",0
+	 tm byte "Value Third Number : ",0
+	 sno dword ?
+	 tno dword ?
+.code
+main PROC
+	; write your code here
+	mov edx,offset fmsg
+	call writestring
+	call readint
+	mov ebx,eax
+
+	mov edx,offset smsg
+	call writestring
+	call readint
+	mov sno,eax
+
+	mov edx,offset tmsg
+	call writestring
+	call readint
+
+	.while ebx<=sno
+	inc ebx
+	 .if sno==eax
+	  add ebx,sno
+	  .else
+	  sub sno,ebx
+	  dec eax
+	  .endif
+	.endw
+
+	mov tno,eax
+	mov edx,offset fm
+	call writestring
+	mov eax,ebx
+	call writeint
+	call crlf
+
+	mov edx,offset sm
+	call writestring
+	mov eax,sno
+	call writeint
+	call crlf
+
+	mov edx,offset tm
+	call writestring
+	mov eax,tno
+	call writeint
+	INVOKE ExitProcess,0
+main ENDP
+; (insert additional procedures here)
+END main
